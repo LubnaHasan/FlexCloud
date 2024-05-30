@@ -7,11 +7,54 @@
     <link rel="stylesheet" href="style2.css" />
     <script
       src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"
+      
     ></script>
   </head>
   <body>
-    <div class="container">
+
+<!--==================== HEADER ====================-->
+      <header class="header" id="header">
+         <nav class="nav container">
+            <a href="#" class="nav__logo">FlexCloud</a>
+
+            <div class="nav__menu" id="nav-menu">
+               <ul class="nav__list">
+                  <li class="nav__item">
+                     <a href="index.html" class="nav__link">Home</a>
+                  </li>
+
+                  <li class="nav__item">
+                     <a href="about.html" class="nav__link">About Us</a>
+                  </li>
+
+                  <li class="nav__item">
+                     <a href="services.html" class="nav__link">Services</a>
+                  </li>
+
+                  <li class="nav__item">
+                     <a href="DSS.html" class="nav__link">DSS</a>
+                  </li>
+
+                  <li class="nav__item">
+                     <a href="contact.html" class="nav__link">Contact Me</a>
+                  </li>
+               </ul>
+
+                  <!-- Close button -->
+               <div class="nav__close" id="nav-close">
+                  <i class="ri-close-line"></i>
+               </div>
+            </div>
+                                             
+               <!-- Toggle button -->
+               <div class="nav__toggle" id="nav-toggle">
+                  <i class="ri-menu-line"></i>
+               </div>
+            </div>
+         </nav>
+      </header>
+    
+    <div class="containers">
       <span class="big-circle"></span>
       <img src="shape.jpg" class="square" alt="" />
       <div class="form">
@@ -61,22 +104,22 @@
 
           <form action="index.html" autocomplete="off">
             <h3 class="title">Contact us</h3>
-            <div class="input-container">
+            <div class="input-containers">
               <input type="text" name="name" class="input" />
               <label for="">Username</label>
               <span>Username</span>
             </div>
-            <div class="input-container">
+            <div class="input-containers">
               <input type="email" name="email" class="input" />
               <label for="">Email</label>
               <span>Email</span>
             </div>
-            <div class="input-container">
+            <div class="input-containers">
               <input type="tel" name="phone" class="input" />
               <label for="">Phone</label>
               <span>Phone</span>
             </div>
-            <div class="input-container textarea">
+            <div class="input-containers textarea">
               <textarea name="message" class="input"></textarea>
               <label for="">Message</label>
               <span>Message</span>
