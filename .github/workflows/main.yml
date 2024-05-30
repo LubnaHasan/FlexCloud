@@ -19,7 +19,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Set subscription
-      run: az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID_FLEXCLOUD }}
+      run: az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
     - name: Deploy to Azure Web App
       run: az webapp deploy --name DataSensitivity --resource-group FlexCloudWeb --src-path . --type php
