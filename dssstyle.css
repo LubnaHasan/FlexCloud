@@ -7,7 +7,7 @@ body {
 }
 
 h1#dss {
-    color: #008080; 
+    color: #1e90ff; 
     text-align: center;
     margin-top: 50px;
     font-size: 3em;
@@ -15,7 +15,7 @@ h1#dss {
 }
 
 h3 {
-    color: #4F97A3;
+    color: #4682b4; 
     text-align: center;
     margin: 20px auto;
     width: 70%;
@@ -53,7 +53,7 @@ select {
     padding: 10px;
     border: 1px solid #1e90ff;
     border-radius: 5px;
-    background-color: #e6f7ff; /* Light blue background */
+    background-color: #e6f7ff; 
     font-size: 1em;
 }
 
@@ -76,7 +76,7 @@ button:hover {
 }
 
 #addData {
-    background-color: #87cefa; /* Light sky blue */
+    background-color: #87cefa; 
 }
 
 #addData:hover {
