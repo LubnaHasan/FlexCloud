@@ -1,27 +1,26 @@
-name: Azure Web App Deploy
+name: Deploy to Azure
 
 on:
   push:
     branches:
-      - main  # or your deployment branch
+      - main  # Adjust the branch name as needed
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up PHP
-      uses: shivammathur/setup-php@v2
+    - name: Login to Azure
+      uses: azure/login@v1
       with:
-        php-version: '8.0' # Adjust this to the PHP version you're using
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Set subscription
+      run: az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
     - name: Deploy to Azure Web App
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: '<Your-Web-App-Name>' # Replace with your web app name
-        slot-name: 'production'
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: .
+      run: az webapp deploy --name DataSensitivity --resource-group FlexCloudWeb --src-path . --type php
+
