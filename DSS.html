@@ -1,81 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Data Security Scoring</title>
-	<link rel="stylesheet" href="style2.css" />
-	<link rel="stylesheet" type="text/css" href="dssstyle.css">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="dssstyle.css">
 </head>
 <body>
-<!--==================== HEADER ====================-->
-      <header class="header" id="header">
-         <nav class="nav container">
-            <a href="#" class="nav__logo">FlexCloud</a>
+<header class="header" id="header">
+    <nav class="nav container">
+        <a href="#" class="nav__logo">FlexCloud</a>
 
-            <div class="nav__menu" id="nav-menu">
-               <ul class="nav__list">
-                  <li class="nav__item">
-                     <a href="index.html" class="nav__link">Home</a>
-                  </li>
+        <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="index.html" class="nav__link">Home</a>
+                </li>
+                <li class="nav__item">
+                    <a href="about.html" class="nav__link">About Us</a>
+                </li>
+                <li class="nav__item">
+                    <a href="services.html" class="nav__link">Services</a>
+                </li>
+                <li class="nav__item">
+                    <a href="dss.html" class="nav__link">DSS</a>
+                </li>
+                <li class="nav__item">
+                    <a href="contact.html" class="nav__link">Contact Us</a>
+                </li>
+            </ul>
 
-                  <li class="nav__item">
-                     <a href="about.html" class="nav__link">About Us</a>
-                  </li>
-
-                  <li class="nav__item">
-                     <a href="Services.html" class="nav__link">Services</a>
-                  </li>
-
-                  <li class="nav__item">
-                     <a href="DSS.html" class="nav__link">DSS</a>
-                  </li>
-
-                  <li class="nav__item">
-                     <a href="contact.html" class="nav__link">Contact Us</a>
-                  </li>
-               </ul>
-
-                  <!-- Close button -->
-               <div class="nav__close" id="nav-close">
-                  <i class="ri-close-line"></i>
-               </div>
+            <div class="nav__close" id="nav-close">
+                <i class="ri-close-line"></i>
             </div>
-                                             
-               <!-- Toggle button -->
-               <div class="nav__toggle" id="nav-toggle">
-                  <i class="ri-menu-line"></i>
-               </div>
-            </div>
-         </nav>
-      </header>
-    
+        </div>
 
-<h1 id="dss">Data Security Scoring</h1>
-<h3>Embark on a trial journey with our Data Security Scoring (DSS) tool today!
-	Discover the power of real-time data security assessment at your fingertips. 
-	Safeguard your valuable information and explore the intuitive features of our DSS, designed to empower you in the digital age.
-	Start your trial now and experience peace of mind in safeguarding your data against modern cyber threats!</h3>
+        <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+</header>
 
-<form method="post" action="dss.php">
-    <label for="data1">Select Data Type:</label>
-    <select name="data[]" id="data1">
-        <option selected disabled>Select a type</option>
-        <option value="Name">Name</option>
-		<option value="Last Name">Last Name</option>
-		<option value="Username">Username</option>
-		<option value="Password">Password</option>
-		<option value="Occupation">Occupation</option>
-		<option value="Office">Office</option>
-		<option value="Phone Number">Phone Number</option>
-        <option value="Home Phone Number">Home Phone Number</option>
-        <option value="National ID">National ID</option>
-		<option value="Supervisor of Employee">Supervisor of Employee</option>
-		<option value="Department">Department</option>
-    </select>
-    <div id="dataFields"></div>
-    <button type="button" id="addData">Add Data Field</button>
-    <button type="submit" name="calculate">Calculate Score</button>
-</form>
+<main>
+    <h1 id="dss">Data Security Scoring</h1>
+    <h3>Embark on a trial journey with our Data Security Scoring (DSS) tool today!
+        Discover the power of real-time data security assessment at your fingertips. 
+        Safeguard your valuable information and explore the intuitive features of our DSS, designed to empower you in the digital age.
+        Start your trial now and experience peace of mind in safeguarding your data against modern cyber threats!
+    </h3>
+
+    <form method="post" action="dss.php">
+        <label for="data1">Select Data Type:</label>
+        <select name="data[]" id="data1">
+            <option selected disabled>Select a type</option>
+            <option value="Name">Name</option>
+            <option value="Last Name">Last Name</option>
+            <option value="Username">Username</option>
+            <option value="Password">Password</option>
+            <option value="Occupation">Occupation</option>
+            <option value="Office">Office</option>
+            <option value="Phone Number">Phone Number</option>
+            <option value="Home Phone Number">Home Phone Number</option>
+            <option value="National ID">National ID</option>
+            <option value="Supervisor of Employee">Supervisor of Employee</option>
+            <option value="Department">Department</option>
+        </select>
+        <div id="dataFields"></div>
+        <button type="button" id="addData">Add Data Field</button>
+        <button type="submit" name="calculate">Calculate Score</button>
+    </form>
+</main>
 
 <script>
     document.getElementById('addData').addEventListener('click', function() {
@@ -90,7 +84,16 @@
         }
         document.getElementById('dataFields').appendChild(newSelect);
     });
-</script>
 
+    // Toggle menu
+    document.getElementById('nav-toggle').addEventListener('click', function() {
+        document.getElementById('nav-menu').classList.add('show-menu');
+    });
+
+    // Close menu
+    document.getElementById('nav-close').addEventListener('click', function() {
+        document.getElementById('nav-menu').classList.remove('show-menu');
+    });
+</script>
 </body>
 </html>
