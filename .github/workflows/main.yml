@@ -1,4 +1,4 @@
-name: Deploy to Azure
+name: Test Azure Login
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main  # Adjust the branch name as needed
 
 jobs:
-  deploy:
+  test-login:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,12 +16,7 @@ jobs:
     - name: Login to Azure
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS_FLEXCLOUD }}  # Update secret name
+        creds: ${{ secrets.AZURE_CREDENTIALS_FLEXCLOUD }}
         client-id: ${{ secrets.AZURE_CLIENT_ID_FLEXCLOUD }}
         tenant-id: ${{ secrets.AZURE_TENANT_ID_FLEXCLOUD }}
-
-    - name: Set subscription
-      run: az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID_FLEXCLOUD }}
-
-    - name: Deploy to Azure Web App
-      run: az webapp deploy --name DataSensitivity --resource-group FlexCloudWeb --src-path . --type php
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID_FLEXCLOUD }}
