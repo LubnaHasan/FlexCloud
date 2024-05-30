@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Security Scoring</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="dssstyle.css">
+</head>
+<body>
+<header class="header" id="header">
+    <nav class="nav container">
+        <a href="#" class="nav__logo">FlexCloud</a>
+
+        <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="index.html" class="nav__link">Home</a>
+                </li>
+                <li class="nav__item">
+                    <a href="about.html" class="nav__link">About Us</a>
+                </li>
+                <li class="nav__item">
+                    <a href="services.html" class="nav__link">Services</a>
+                </li>
+                <li class="nav__item">
+                    <a href="dss.html" class="nav__link">DSS</a>
+                </li>
+                <li class="nav__item">
+                    <a href="contact.html" class="nav__link">Contact Us</a>
+                </li>
+            </ul>
+
+            <div class="nav__close" id="nav-close">
+                <i class="ri-close-line"></i>
+            </div>
+        </div>
+
+        <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <h1 id="dss">Data Security Scoring</h1>
+    <h3>Embark on a trial journey with our Data Security Scoring (DSS) tool today!
+        Discover the power of real-time data security assessment at your fingertips. 
+        Safeguard your valuable information and explore the intuitive features of our DSS, designed to empower you in the digital age.
+        Start your trial now and experience peace of mind in safeguarding your data against modern cyber threats!
+    </h3>
+
+    <form id="dataForm">
+        <label for="data1">Select Data Type:</label>
+        <select name="data[]" id="data1">
+            <option selected disabled>Select a type</option>
+            <option value="Name">Name</option>
+            <option value="Last Name">Last Name</option>
+            <option value="Username">Username</option>
+            <option value="Password">Password</option>
+            <option value="Occupation">Occupation</option>
+            <option value="Office">Office</option>
+            <option value="Phone Number">Phone Number</option>
+            <option value="Home Phone Number">Home Phone Number</option>
+            <option value="National ID">National ID</option>
+            <option value="Supervisor of Employee">Supervisor of Employee</option>
+            <option value="Department">Department</option>
+        </select>
+        <div id="dataFields"></div>
+        <button type="button" id="addData">Add Data Field</button>
+        <button type="button" id="calculateScore">Calculate Score</button>
+    </form>
+
+    <div id="result"></div>
+</main>
+
+<script>
+    document.getElementById('addData').addEventListener('click', function() {
+        var newSelect = document.createElement('select');
+        newSelect.name = 'data[]';
+        var options = ['Select a type', 'Name','Last Name','Username','Password','Occupation','Office','Phone Number', 'Home Phone Number', 'National ID','Supervisor of Employee','Department'];
+        for(var i = 0; i < options.length; i++) {
+            var option = document.createElement('option');
+            option.value = options[i];
+            option.textContent = options[i];
+            newSelect.appendChild(option);
+        }
+        document.getElementById('dataFields').appendChild(newSelect);
+    });
+
+    document.getElementById('calculateScore').addEventListener('click', function() {
+        var selectedData = document.querySelectorAll('select[name="data[]"]');
+        var totalScore = 0;
+        var totalCount = 0;
+
+        selectedData.forEach(function(select) {
+            if(select.value !== 'Select a type') {
+                totalScore += getScore(select.value);
+                totalCount++;
+            }
+        });
+
+        var averageScore = (totalScore / totalCount) * 10;
+        document.getElementById('result').textContent = "Average Score: " + averageScore + "%";
+    });
+
+    function getScore(dataType) {
+        var scores = {
+            'Select a type': 0,
+            'Name': 3,
+            'Last Name': 3,
+            'Username': 7,
+            'Password': 10,
+            'Occupation': 4,
+            'Office': 4,
+            'Phone Number': 7,
+            'Home Phone Number': 7,
+            'National ID': 9,
+            'Supervisor of Employee': 5,
+            'Department': 4
+        };
+        return scores[dataType];
+    }
+
+    // Toggle menu
+    document.getElementById('nav-toggle').addEventListener('click', function() {
+        document.getElementById('nav-menu').classList.add('show-menu');
+    });
+
+    // Close menu
+    document.getElementById('nav-close').addEventListener('click', function() {
+        document.getElementById('nav-menu').classList.remove('show-menu');
+    });
+</script>
+</body>
+</html>
