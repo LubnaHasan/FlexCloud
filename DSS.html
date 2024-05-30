@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Data Security Scoring</title>
+</head>
+<body>
+
+<h1 id="dss">Data Security Scoring</h1>
+
+<form method="post" action="dss.php">
+    <label for="data1">Select Data Type:</label>
+    <select name="data[]" id="data1">
+        <option selected disabled>Select a type</option>
+        <option value="Name">Name</option>
+		<option value="Last Name">Last Name</option>
+		<option value="Username">Username</option>
+		<option value="Password">Password</option>
+		<option value="Occupation">Occupation</option>
+		<option value="Office">Office</option>
+		<option value="Phone Number">Phone Number</option>
+        <option value="Home Phone Number">Home Phone Number</option>
+        <option value="National ID">National ID</option>
+		<option value="Supervisor of Employee">Supervisor of Employee</option>
+		<option value="Department">Department</option>
+    </select>
+    <div id="dataFields"></div>
+    <button type="button" id="addData">Add Data Field</button>
+    <button type="submit" name="calculate">Calculate Score</button>
+</form>
+
+<script>
+    document.getElementById('addData').addEventListener('click', function() {
+        var newSelect = document.createElement('select');
+        newSelect.name = 'data[]';
+        var options = ['Select a type', 'Name','Last Name','Username','Password','Occupation','Office','Phone Number', 'Home Phone Number', 'National ID','Supervisor of Employee','Department'];
+        for(var i = 0; i < options.length; i++) {
+            var option = document.createElement('option');
+            option.value = options[i];
+            option.textContent = options[i];
+            newSelect.appendChild(option);
+        }
+        document.getElementById('dataFields').appendChild(newSelect);
+    });
+</script>
+
+</body>
+</html>
