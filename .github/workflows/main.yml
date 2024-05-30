@@ -16,11 +16,14 @@ jobs:
     - name: Login to Azure
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        creds: ${{ secrets.AZURE_CREDENTIALS_FLEXCLOUD }}  # Update secret name
+        client-id: ${{ secrets.AZURE_CLIENT_ID_FLEXCLOUD }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID_FLEXCLOUD }}
 
     - name: Set subscription
-      run: az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      run: az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID_FLEXCLOUD }}
 
     - name: Deploy to Azure Web App
       run: az webapp deploy --name DataSensitivity --resource-group FlexCloudWeb --src-path . --type php
+
 
